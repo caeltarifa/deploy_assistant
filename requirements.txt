@@ -1,0 +1,4 @@
+fastmcp
+starlette
+docker
+playwright

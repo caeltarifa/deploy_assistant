@@ -1,0 +1,15 @@
+services:
+  fastmcp:
+    build: .
+    container_name: fastmcp-docker
+    network_mode: "host"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/akira-module/Database:/var/lib/akira-module/Database
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority:ro
+    environment:
+      - DISPLAY=${DISPLAY}
+
+    command: >
+      python -m app.server
